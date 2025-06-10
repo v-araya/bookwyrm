@@ -641,6 +641,10 @@ urlpatterns = [
     re_path(r"^delete-shelf/(?P<shelf_id>\d+)/?$", views.delete_shelf),
     re_path(r"^shelve/?$", views.shelve),
     re_path(r"^unshelve/?$", views.unshelve),
+    
+    # User books stats
+    re_path(rf"{USER_PATH}/reading-stats", views.ReadingStats.as_view(), name="user-reading-stats"),
+    
     # goals
     re_path(
         rf"{LOCAL_USER_PATH}/goal/(?P<year>\d+)/?$",

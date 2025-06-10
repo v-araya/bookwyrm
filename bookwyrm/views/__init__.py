@@ -187,5 +187,8 @@ from .annual_summary import (
     summary_add_key,
     summary_revoke_key,
 )
+from .reading_stats import (
+    ReadingStats
+)
 from .server_error import server_error
 from .permission_denied import permission_denied

@@ -1,0 +1,57 @@
+{% extends 'user/layout.html' %}
+{% load utilities %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Books stats" %} - {{ user|username }}
+{% endblock %}
+
+{% block header %}
+test
+{% endblock %}
+
+
+{% block panel %}
+
+
+
+<table class="reading_stats">
+    <thead>
+        <tr>
+            <th class="reading_stats category_column">Books</th>
+            <th class="reading_stats year_column"></th>
+            <th class="reading_stats category_column">Pages</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in stats_by_year %}
+        <tr>
+            <td class="reading_stats chart_background">
+                <div class="reading_stats books_stats_bar" value="{{ item.books }}" style="width: {{ item.books }}%; background-color: red">
+                    {{ item.books }}
+                </div>
+            </td>
+            <td>
+                <h3> {{ item.year }} </h3>
+            </td>
+            <td class="reading_stats books_stats_bar" style="width: {{ item.books }}%; background-color: red">
+                <div> {{ item.pages }} </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script nonce="{{request.csp_nonce}}">
+
+    var elements = document.getElementsByClassName("books_stats_bar");
+    for (var i = 0; i < elements.length; i++) {
+        console.log(elements[i])
+        console.log(elements[i].value)
+
+    }
+</script>
+
+
+
+{% endblock %}

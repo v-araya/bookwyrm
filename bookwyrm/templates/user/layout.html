@@ -107,6 +107,10 @@
                 <a href="{{ url }}">{% trans "Books" %}</a>
             </li>
             {% endif %}
+            {% url 'user-reading-stats' user|username as url %}
+            <li{% if url == request.path %} class="is-active"{% endif %} id="tour-reading-stats-tab">
+                <a href="{{ url }}">{% trans "Reading stats" %}</a>
+            </li>
         </ul>
     </nav>
     {% endwith %}
